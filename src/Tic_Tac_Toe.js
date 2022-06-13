@@ -179,7 +179,7 @@ const Tic_Tac_Toe = () => {
       <TouchableOpacity style={styles.resetButton} onPress={resetMarkers}>
         <Image
           source={{
-            uri: 'https://cdn-icons.flaticon.com/png/128/2618/premium/2618245.png?token=exp=1655098134~hmac=13c6085295176b0ebc501724f5f34998',
+            uri: 'https://cdn-icons.flaticon.com/png/128/2618/premium/2618245.png?token=exp=1655100997~hmac=13158c45111c7e75f75d450dbc404cc8',
           }}
           style={{width: 50, height: 50}}
         />
