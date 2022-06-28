@@ -3,14 +3,14 @@ import {Text, View} from 'react-native';
 import React from 'react';
 // import LinearGradient1 from './src/linearGradient';
 // import Tic_Tac_Toe from './src/Tic_Tac_Toe';
-import New1 from './src/New1';
+import Drag_drop from './src/Drag_drop';
 
 const App = () => {
   return (
     <View>
       {/* <Tic_Tac_Toe /> */}
       {/* <LinearGradient1 /> */}
-      <New1 />
+      <Drag_drop />
     </View>
   );
 };

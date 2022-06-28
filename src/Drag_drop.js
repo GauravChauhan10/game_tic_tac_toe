@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -7,23 +7,21 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 
-const New = () => {
+const Drag_drop = () => {
   const pan = useRef(new Animated.ValueXY()).current;
   const [visible, setVisible] = useState(true);
   const scale = new Animated.Value(1);
-  const onPress = () => {
-    setVisible(!visible);
-    Animated.timing(scale, {
-      toValue: 2,
-      duration: 4000,
-      useNativeDriver: true,
-    }).start();
-  };
   const saveButtonHeight = scale.interpolate({
     inputRange: [1, 2],
     outputRange: visible ? [2, 1] : [1, 2],
   });
-
+  useEffect(() => {
+    Animated.timing(scale, {
+      toValue: 2,
+      duration: 5000,
+      useNativeDriver: false,
+    }).start();
+  }, [visible]);
   const panResponder = useRef(
     PanResponder.create({
       onMoveShouldSetPanResponder: () => true,
@@ -53,7 +51,10 @@ const New = () => {
           ],
         }}
         {...panResponder.panHandlers}>
-        <TouchableWithoutFeedback onPress={onPress}>
+        <TouchableWithoutFeedback
+          onPress={() => {
+            setVisible(!visible);
+          }}>
           <View style={styles.box} />
         </TouchableWithoutFeedback>
       </Animated.View>
@@ -61,7 +62,7 @@ const New = () => {
   );
 };
 
-export default New;
+export default Drag_drop;
 
 const styles = StyleSheet.create({
   box: {
