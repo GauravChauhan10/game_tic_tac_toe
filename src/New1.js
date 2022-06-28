@@ -1,18 +1,18 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   StyleSheet,
   View,
   Animated,
   PanResponder,
-  TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
 
 const New = () => {
   const pan = useRef(new Animated.ValueXY()).current;
-
+  const [visible, setVisible] = useState(true);
   const scale = new Animated.Value(1);
   const onPress = () => {
+    setVisible(!visible);
     Animated.timing(scale, {
       toValue: 2,
       duration: 4000,
@@ -21,7 +21,7 @@ const New = () => {
   };
   const saveButtonHeight = scale.interpolate({
     inputRange: [1, 2],
-    outputRange: [1, 2],
+    outputRange: visible ? [2, 1] : [1, 2],
   });
 
   const panResponder = useRef(
